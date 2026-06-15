@@ -1,0 +1,100 @@
+kedi
+köpek
+at
+eşek
+inek
+koyun
+keçi
+domuz
+tavşan
+hamster
+fare
+sıçan
+sincap
+kirpi
+tilki
+kurt
+ayı
+panda
+koala
+kanguru
+maymun
+goril
+şempanze
+orangutan
+aslan
+kaplan
+leopar
+çita
+jaguar
+vaşak
+fil
+zürafa
+zebra
+gergedan
+su aygırı
+deve
+lama
+alpaka
+geyik
+ceylan
+antilop
+bizon
+manda
+yak
+yaban domuzu
+rakun
+kokarca
+kunduz
+su samuru
+misk kedisi
+mirket
+tembel hayvan
+karıncayiyen
+armadillo
+köstebek
+yarasa
+kutup ayısı
+boz ayı
+penguen
+fok
+deniz aslanı
+mors
+yunus
+balina
+orka
+köpek balığı
+vatoz
+ahtapot
+kalamar
+mürekkep balığı
+denizanası
+denizyıldızı
+denizatı
+yengeç
+ıstakoz
+karides
+midye
+istiridye
+salyangoz
+kaplumbağa
+timsah
+aligatör
+yılan
+kobra
+piton
+anakonda
+boa
+kertenkele
+iguana
+bukalemun
+gecko
+varan
+kurbağa
+semender
+kartal
+şahin
+doğan
+baykuş
+karga
+saksağan

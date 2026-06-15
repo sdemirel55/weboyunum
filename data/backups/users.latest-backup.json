@@ -1,0 +1,784 @@
+{
+  "users": [
+    {
+      "id": "add82878-f938-4659-bac6-a3c5195bda06",
+      "username": "sdemirel55",
+      "email": "fb.serdar55@gmail.com",
+      "passwordHash": "752cc9593fda839f7b8357395215582d:9d1164576af95eb97f06546862d2289641c89bd5de08e564e00830e03a7d17b00655f31d945a57c820f3ae295ad130229992c7383c785498e498d69e2cb8b03f",
+      "firstName": "Serdar",
+      "lastName": "Demirel",
+      "birthDay": "22",
+      "birthMonth": "07",
+      "birthYear": 1996,
+      "phone": "05409651303",
+      "provider": "local",
+      "emailVerified": true,
+      "phoneVerified": true,
+      "weeklyScore": 0,
+      "totalScore": 644,
+      "createdAt": "2026-06-08T19:24:38.573Z",
+      "lastEmailCodeSentAt": 1780946678573,
+      "friends": [
+        "88216ec1-4407-46ff-9da0-bdf9c5f64866",
+        "d021e9f3-832a-4973-a4a5-7a5d1063a8b8"
+      ],
+      "friendRequests": [],
+      "sentFriendRequests": [],
+      "blockedUsers": [],
+      "lastPasswordResetSentAt": 1781138501265,
+      "passwordChangedAt": "2026-06-11T00:42:35.169Z",
+      "lastKnownIp": "217.131.68.237",
+      "lastKnownIpAt": "2026-06-15T14:41:51.694Z",
+      "lastKnownDeviceId": "d72a3c378d564679a0af62cbf5961aae",
+      "lastKnownDeviceAt": "2026-06-15T14:41:51.694Z"
+    },
+    {
+      "id": "d021e9f3-832a-4973-a4a5-7a5d1063a8b8",
+      "username": "sdemirel5561",
+      "email": "fb_serdar1996@hotmail.com",
+      "passwordHash": "96a5dcfa6e3da053c3839a9de16ffc53:c982e630e8aa208b7b5aac073fd7b0f108c8bc6e8d7f0db1af2988bd3f13b445b10ea4978881291459575ffb4aedac1d9ac377c95d3878f7993133cfc282dece",
+      "firstName": "serdar",
+      "lastName": "demirel",
+      "birthDay": "01",
+      "birthMonth": "07",
+      "birthYear": 1996,
+      "phone": "05449656103",
+      "provider": "local",
+      "emailVerified": true,
+      "phoneVerified": true,
+      "weeklyScore": 0,
+      "totalScore": 408,
+      "createdAt": "2026-06-08T20:00:17.408Z",
+      "lastEmailCodeSentAt": 1780948817408,
+      "friends": [
+        "add82878-f938-4659-bac6-a3c5195bda06"
+      ],
+      "friendRequests": [],
+      "sentFriendRequests": [],
+      "blockedUsers": []
+    },
+    {
+      "id": "88216ec1-4407-46ff-9da0-bdf9c5f64866",
+      "username": "sdemirel",
+      "email": "denemeliyiz55@gmail.com",
+      "passwordHash": "052a421f5304fe9d83c3208db6a2ad19:b407ab44dff20a189f96698f7d595e68c5ec2dbf5a52152123c4f71d407a60980a5bac4f860c0a40c53bdbfe53da9661ee13fc8c6240fa4c1b4b515faabfaeac",
+      "firstName": "serdar",
+      "lastName": "Demirel",
+      "birthDay": "01",
+      "birthMonth": "02",
+      "birthYear": 1990,
+      "phone": "05487899999",
+      "provider": "local",
+      "emailVerified": true,
+      "phoneVerified": true,
+      "weeklyScore": 0,
+      "totalScore": 272,
+      "createdAt": "2026-06-08T21:12:57.296Z",
+      "lastEmailCodeSentAt": 1780953177296,
+      "friends": [
+        "add82878-f938-4659-bac6-a3c5195bda06"
+      ],
+      "friendRequests": [],
+      "sentFriendRequests": [],
+      "blockedUsers": [],
+      "afkRoomKickPenalties": {
+        "global-1": {
+          "dayKey": "2026-06-11",
+          "kickCount": 1,
+          "durationMs": 300000,
+          "blockedUntil": 1781129235916,
+          "updatedAt": "2026-06-10T22:02:15.916Z"
+        }
+      },
+      "lastKnownDeviceId": "f2d3c0143c8b4334b489d50d876182b4",
+      "lastKnownDeviceAt": "2026-06-14T12:09:02.008Z",
+      "lastKnownIp": "217.131.68.237",
+      "lastKnownIpAt": "2026-06-14T12:09:02.008Z"
+    },
+    {
+      "id": "95cb9bae-f4ea-424d-861e-7c254713a5e0",
+      "username": "serelo",
+      "email": "fb.serdar5e5@gmail.com",
+      "passwordHash": "5ee0a3c9f4e8aeacfc3162e55f6f8264:e6e2f39eb5d94e3e1e5f4ae3c51c50f87008bb27fb6199e39e99dbbc4b7273d2a78cab0e777a540744faaa33ee8d461cbd86b63d6d254865eec07cf124ee5918",
+      "firstName": "serdar",
+      "lastName": "demirel",
+      "birthDay": "18",
+      "birthMonth": "01",
+      "birthYear": 1990,
+      "phone": "05409651304",
+      "provider": "local",
+      "emailVerified": true,
+      "phoneVerified": true,
+      "weeklyScore": 0,
+      "totalScore": 0,
+      "createdAt": "2026-06-10T21:57:25.414Z",
+      "emailCode": "619834",
+      "emailCodeExpiresAt": 1781129245414,
+      "lastEmailCodeSentAt": 1781128645414,
+      "friends": [
+        "sfd-sketch-root-admin"
+      ],
+      "friendRequests": [],
+      "sentFriendRequests": [],
+      "blockedUsers": [],
+      "lastKnownIp": "217.131.68.237",
+      "lastKnownIpAt": "2026-06-14T15:14:11.683Z",
+      "lastKnownDeviceId": "3130ae9e15fb41ba87ebc14eb9476836",
+      "lastKnownDeviceAt": "2026-06-14T15:14:11.683Z"
+    },
+    {
+      "id": "sfd-sketch-root-admin",
+      "username": "admin",
+      "email": "admin@sfdsketch.local",
+      "firstName": "SFD",
+      "lastName": "SKETCH",
+      "birthDay": 1,
+      "birthMonth": 1,
+      "birthYear": 1990,
+      "phone": "admin",
+      "provider": "local",
+      "emailVerified": true,
+      "phoneVerified": true,
+      "weeklyScore": 0,
+      "totalScore": 0,
+      "createdAt": "2026-06-13T22:57:14.274Z",
+      "displayName": "SFD SKETCH",
+      "isAdmin": true,
+      "passwordHash": "963472592bf9d0e6efe5b522f9629a35:6c53391ff9ae4385fa9a083d7f957531ed94f7313d8934254de821a4c3f5bba72a13bf40d15203599c893f169d5b98f11845c4362df175c02c08612eb4758958",
+      "blockedUsers": [],
+      "friends": [
+        "95cb9bae-f4ea-424d-861e-7c254713a5e0"
+      ],
+      "friendRequests": [],
+      "sentFriendRequests": [],
+      "lastKnownIp": "217.131.68.237",
+      "lastKnownIpAt": "2026-06-14T12:11:53.665Z",
+      "lastKnownDeviceId": "f305f65664a94a14a97b81b2c188b463",
+      "lastKnownDeviceAt": "2026-06-14T15:08:57.331Z"
+    },
+    {
+      "id": "c630140b-1adf-4404-8507-9436beecd3b1",
+      "username": "HeLLGuardiaN",
+      "email": "tolgayasininan@gmail.com",
+      "passwordHash": "d8ba64f3e774ba7f28a05024d92363cf:d2a9e24f8381ff091dc9d0fbe082a7484cb84a93e2467510f6ad88ea98646238f6f0f2e6aabf54c670590e0d91c7ea4a5de0fc89fcf91db48b2b947aec6c0edd",
+      "firstName": "yasin",
+      "lastName": "inan",
+      "birthDay": "16",
+      "birthMonth": "01",
+      "birthYear": 1995,
+      "phone": "05457941455",
+      "provider": "local",
+      "emailVerified": false,
+      "phoneVerified": true,
+      "weeklyScore": 0,
+      "totalScore": 0,
+      "createdAt": "2026-06-14T12:11:46.879Z",
+      "emailCode": "575777",
+      "emailCodeExpiresAt": 1781439706879,
+      "lastEmailCodeSentAt": 1781439106879
+    },
+    {
+      "id": "846c77e5-9a89-40d4-83d3-cc9676625eaa",
+      "username": "HeLLGuardiaN",
+      "email": "tolgayasininan@gmail.com",
+      "passwordHash": "2f2f7c1e00acb512515f550b9ae83a36:5ccbc82ee4a84114b5a219abd4046cc05d4e071df69599eba2bb5b6c627d9197368eb0c5f46084b833af31cffc4baf3c7c903825f0d05dd9101604769e1f4cbc",
+      "firstName": "yasin",
+      "lastName": "inan",
+      "birthDay": "16",
+      "birthMonth": "01",
+      "birthYear": 1995,
+      "phone": "05457941455",
+      "provider": "local",
+      "emailVerified": true,
+      "phoneVerified": true,
+      "weeklyScore": 0,
+      "totalScore": 170,
+      "createdAt": "2026-06-14T12:11:47.207Z",
+      "lastEmailCodeSentAt": 1781439107207,
+      "friends": [],
+      "friendRequests": [],
+      "sentFriendRequests": [],
+      "blockedUsers": [],
+      "lastKnownIp": "217.131.96.149",
+      "lastKnownIpAt": "2026-06-14T12:12:41.044Z",
+      "lastKnownDeviceId": "2892cfe5d74644588ddb8ab082a8eab2",
+      "lastKnownDeviceAt": "2026-06-14T12:12:41.044Z"
+    },
+    {
+      "id": "02367d5c-e5d6-4b10-9bd2-3b9822a5b154",
+      "username": "Fatmademireş",
+      "email": "fatmademirel5561@gmail.com",
+      "passwordHash": "7e70ab117d38abc38ce5e896e89baf68:3289e805188d8e979bd8e23a923e17b2e201ba78862d166c2cc0d8a012298ef94cb5f92180273d529370e8d72fe659e93c6872d00b9254e7fed317f4f306aae6",
+      "firstName": "Fatma",
+      "lastName": "Demirel",
+      "birthDay": "31",
+      "birthMonth": "01",
+      "birthYear": 1997,
+      "phone": "05349654839",
+      "provider": "local",
+      "emailVerified": true,
+      "phoneVerified": true,
+      "weeklyScore": 0,
+      "totalScore": 0,
+      "createdAt": "2026-06-14T15:00:10.925Z",
+      "lastEmailCodeSentAt": 1781449210925,
+      "friends": [],
+      "friendRequests": [],
+      "sentFriendRequests": [],
+      "blockedUsers": [],
+      "lastKnownIp": "217.131.68.237",
+      "lastKnownIpAt": "2026-06-14T15:00:57.007Z",
+      "lastKnownDeviceId": "a20ded9511454583a66740d730d6a9ba",
+      "lastKnownDeviceAt": "2026-06-14T15:00:57.007Z"
+    }
+  ],
+  "tokens": {
+    "c57f0cbd2582e7711329a00e17276c0a56aeef079ccfd60442629b70fbe27461": {
+      "userId": "sfd-sketch-root-admin",
+      "createdAt": "2026-06-14T12:39:06.910Z"
+    },
+    "d61f6593b01bb76eecb27c58b729babc80dd84a856bf695ad4d8c68713072b37": {
+      "userId": "95cb9bae-f4ea-424d-861e-7c254713a5e0",
+      "createdAt": "2026-06-14T12:41:46.492Z"
+    },
+    "44ed5642f1bec7f4a112e0c43082fec0640a3f33bd3fd64ecd875b40d4bc1c5a": {
+      "userId": "95cb9bae-f4ea-424d-861e-7c254713a5e0",
+      "createdAt": "2026-06-14T12:57:49.717Z"
+    },
+    "7a1333ba1558d94a074fa919b0d555f27b106266d6c650e1e98ad046fed85cb6": {
+      "userId": "add82878-f938-4659-bac6-a3c5195bda06",
+      "createdAt": "2026-06-14T14:55:50.508Z"
+    },
+    "4556f1a504f7ad58ecc23ea5f2dc9c4d6568dcfb05b2a35c70e2744770a2dcc6": {
+      "userId": "02367d5c-e5d6-4b10-9bd2-3b9822a5b154",
+      "createdAt": "2026-06-14T15:00:34.385Z"
+    },
+    "0877e90918800221452ef5d989bc4a1094f6191441480a647333c8e0ef715df6": {
+      "userId": "add82878-f938-4659-bac6-a3c5195bda06",
+      "createdAt": "2026-06-15T14:41:50.911Z"
+    }
+  },
+  "settings": {
+    "weeklyResetKey": "2026-W25",
+    "scoreSettings": {
+      "guesserFirstPoints": 10,
+      "guesserMinPoints": 5,
+      "drawerFirstCorrectPoints": 10,
+      "drawerAdditionalCorrectPoints": 1,
+      "drawerAdditionalCorrectLimit": 5,
+      "hintPenalty": 2,
+      "globalAwardRankGroups": 3,
+      "correctMin": 5,
+      "correctTimeMultiplier": 0,
+      "drawerBonus": 10
+    },
+    "adminBans": {
+      "users": {},
+      "ips": {},
+      "audit": [
+        {
+          "action": "unban",
+          "details": {
+            "userId": "",
+            "ip": "unknown",
+            "deviceId": "",
+            "networkScope": "local-loopback"
+          },
+          "at": "2026-06-14T00:05:40.105Z"
+        },
+        {
+          "action": "network-ban-by-username",
+          "details": {
+            "targetUserId": "95cb9bae-f4ea-424d-861e-7c254713a5e0",
+            "username": "serelo",
+            "ip": "",
+            "networkScope": "local-loopback",
+            "deviceId": "f305f65664a94a14a97b81b2c188b463",
+            "until": 0,
+            "reason": "Yönetici kararı"
+          },
+          "at": "2026-06-14T00:05:13.103Z"
+        },
+        {
+          "action": "unban",
+          "details": {
+            "userId": "",
+            "ip": "unknown",
+            "deviceId": "",
+            "networkScope": "local-loopback"
+          },
+          "at": "2026-06-14T00:04:59.619Z"
+        },
+        {
+          "action": "network-ban-by-username",
+          "details": {
+            "targetUserId": "add82878-f938-4659-bac6-a3c5195bda06",
+            "username": "sdemirel55",
+            "ip": "",
+            "networkScope": "local-loopback",
+            "deviceId": "f305f65664a94a14a97b81b2c188b463",
+            "until": 0,
+            "reason": "Yönetici kararı"
+          },
+          "at": "2026-06-14T00:04:52.643Z"
+        },
+        {
+          "action": "unban",
+          "details": {
+            "userId": "",
+            "ip": "unknown",
+            "deviceId": "",
+            "networkScope": "local-loopback"
+          },
+          "at": "2026-06-14T00:04:45.689Z"
+        },
+        {
+          "action": "network-ban-by-username",
+          "details": {
+            "targetUserId": "95cb9bae-f4ea-424d-861e-7c254713a5e0",
+            "username": "serelo",
+            "ip": "",
+            "networkScope": "local-loopback",
+            "deviceId": "2fa7a3ab342e4c48a30157b8a78e6ad3",
+            "until": 0,
+            "reason": "Yönetici kararı"
+          },
+          "at": "2026-06-14T00:04:13.037Z"
+        },
+        {
+          "action": "unban",
+          "details": {
+            "userId": "",
+            "ip": "unknown",
+            "deviceId": "",
+            "networkScope": "local-loopback"
+          },
+          "at": "2026-06-14T00:03:45.844Z"
+        },
+        {
+          "action": "network-ban-by-username",
+          "details": {
+            "targetUserId": "95cb9bae-f4ea-424d-861e-7c254713a5e0",
+            "username": "serelo",
+            "ip": "",
+            "networkScope": "local-loopback",
+            "deviceId": "2fa7a3ab342e4c48a30157b8a78e6ad3",
+            "until": 0,
+            "reason": "Yönetici kararı"
+          },
+          "at": "2026-06-14T00:03:37.590Z"
+        },
+        {
+          "action": "network-ban-by-username",
+          "details": {
+            "targetUserId": "add82878-f938-4659-bac6-a3c5195bda06",
+            "username": "sdemirel55",
+            "ip": "",
+            "networkScope": "local-loopback",
+            "deviceId": "f305f65664a94a14a97b81b2c188b463",
+            "until": 0,
+            "reason": "Yönetici kararı"
+          },
+          "at": "2026-06-14T00:03:29.778Z"
+        },
+        {
+          "action": "unban",
+          "details": {
+            "userId": "",
+            "ip": "unknown",
+            "deviceId": "",
+            "networkScope": "local-loopback"
+          },
+          "at": "2026-06-14T00:03:20.573Z"
+        },
+        {
+          "action": "network-ban-by-username",
+          "details": {
+            "targetUserId": "add82878-f938-4659-bac6-a3c5195bda06",
+            "username": "sdemirel55",
+            "ip": "",
+            "networkScope": "local-loopback",
+            "deviceId": "f305f65664a94a14a97b81b2c188b463",
+            "until": 0,
+            "reason": "Yönetici kararı"
+          },
+          "at": "2026-06-14T00:02:53.175Z"
+        },
+        {
+          "action": "network-ban-by-username",
+          "details": {
+            "targetUserId": "95cb9bae-f4ea-424d-861e-7c254713a5e0",
+            "username": "serelo",
+            "ip": "",
+            "networkScope": "local-loopback",
+            "deviceId": "2fa7a3ab342e4c48a30157b8a78e6ad3",
+            "until": 0,
+            "reason": "Yönetici kararı"
+          },
+          "at": "2026-06-14T00:01:58.824Z"
+        },
+        {
+          "action": "unban",
+          "details": {
+            "userId": "95cb9bae-f4ea-424d-861e-7c254713a5e0",
+            "ip": "unknown",
+            "deviceId": "",
+            "networkScope": ""
+          },
+          "at": "2026-06-14T00:01:46.491Z"
+        },
+        {
+          "action": "unban",
+          "details": {
+            "userId": "",
+            "ip": "unknown",
+            "deviceId": "",
+            "networkScope": "local-loopback"
+          },
+          "at": "2026-06-14T00:00:21.391Z"
+        },
+        {
+          "action": "ip-ban",
+          "details": {
+            "targetUserId": "95cb9bae-f4ea-424d-861e-7c254713a5e0",
+            "username": "serelo",
+            "until": 0,
+            "reason": "IP banı"
+          },
+          "at": "2026-06-14T00:00:10.029Z"
+        },
+        {
+          "action": "unban",
+          "details": {
+            "userId": "",
+            "ip": "unknown",
+            "deviceId": "",
+            "networkScope": "local-loopback"
+          },
+          "at": "2026-06-13T23:59:33.268Z"
+        },
+        {
+          "action": "network-ban-by-username",
+          "details": {
+            "targetUserId": "95cb9bae-f4ea-424d-861e-7c254713a5e0",
+            "username": "serelo",
+            "ip": "",
+            "networkScope": "local-loopback",
+            "deviceId": "2fa7a3ab342e4c48a30157b8a78e6ad3",
+            "until": 0,
+            "reason": "Yönetici kararı"
+          },
+          "at": "2026-06-13T23:57:23.996Z"
+        },
+        {
+          "action": "unban",
+          "details": {
+            "userId": "",
+            "ip": "unknown",
+            "deviceId": "2fa7a3ab342e4c48a30157b8a78e6ad3"
+          },
+          "at": "2026-06-13T23:56:15.247Z"
+        },
+        {
+          "action": "unban",
+          "details": {
+            "userId": "95cb9bae-f4ea-424d-861e-7c254713a5e0",
+            "ip": "unknown",
+            "deviceId": ""
+          },
+          "at": "2026-06-13T23:56:14.662Z"
+        },
+        {
+          "action": "device-ban-by-username",
+          "details": {
+            "targetUserId": "95cb9bae-f4ea-424d-861e-7c254713a5e0",
+            "username": "serelo",
+            "ip": "",
+            "deviceId": "2fa7a3ab342e4c48a30157b8a78e6ad3",
+            "until": 0,
+            "reason": "Yönetici kararı"
+          },
+          "at": "2026-06-13T23:56:06.080Z"
+        },
+        {
+          "action": "user-ban-by-username",
+          "details": {
+            "targetUserId": "95cb9bae-f4ea-424d-861e-7c254713a5e0",
+            "username": "serelo",
+            "until": 0,
+            "reason": "Yönetici kararı"
+          },
+          "at": "2026-06-13T23:55:57.684Z"
+        },
+        {
+          "action": "unban",
+          "details": {
+            "userId": "95cb9bae-f4ea-424d-861e-7c254713a5e0",
+            "ip": "unknown",
+            "deviceId": ""
+          },
+          "at": "2026-06-13T23:55:53.647Z"
+        },
+        {
+          "action": "user-ban-by-username",
+          "details": {
+            "targetUserId": "95cb9bae-f4ea-424d-861e-7c254713a5e0",
+            "username": "serelo",
+            "until": 0,
+            "reason": "Yönetici kararı"
+          },
+          "at": "2026-06-13T23:55:48.611Z"
+        },
+        {
+          "action": "unban",
+          "details": {
+            "userId": "",
+            "ip": "unknown",
+            "deviceId": "2fa7a3ab342e4c48a30157b8a78e6ad3"
+          },
+          "at": "2026-06-13T23:53:39.439Z"
+        },
+        {
+          "action": "unban",
+          "details": {
+            "userId": "95cb9bae-f4ea-424d-861e-7c254713a5e0",
+            "ip": "unknown",
+            "deviceId": ""
+          },
+          "at": "2026-06-13T23:53:38.690Z"
+        },
+        {
+          "action": "user-ban-by-username",
+          "details": {
+            "targetUserId": "95cb9bae-f4ea-424d-861e-7c254713a5e0",
+            "username": "serelo",
+            "until": 0,
+            "reason": "Yönetici kararı"
+          },
+          "at": "2026-06-13T23:53:25.114Z"
+        },
+        {
+          "action": "device-ban-by-username",
+          "details": {
+            "targetUserId": "95cb9bae-f4ea-424d-861e-7c254713a5e0",
+            "username": "serelo",
+            "ip": "",
+            "deviceId": "2fa7a3ab342e4c48a30157b8a78e6ad3",
+            "until": 0,
+            "reason": "Yönetici kararı"
+          },
+          "at": "2026-06-13T23:51:45.669Z"
+        },
+        {
+          "action": "kick",
+          "details": {
+            "targetUserId": "95cb9bae-f4ea-424d-861e-7c254713a5e0",
+            "targetName": "serelo",
+            "reason": "Yönetici kararı"
+          },
+          "at": "2026-06-13T23:47:51.643Z"
+        },
+        {
+          "action": "unban",
+          "details": {
+            "userId": "",
+            "ip": "::1"
+          },
+          "at": "2026-06-13T23:41:12.680Z"
+        },
+        {
+          "action": "unban",
+          "details": {
+            "userId": "95cb9bae-f4ea-424d-861e-7c254713a5e0",
+            "ip": "unknown"
+          },
+          "at": "2026-06-13T23:41:12.107Z"
+        },
+        {
+          "action": "ip-ban",
+          "details": {
+            "targetUserId": "95cb9bae-f4ea-424d-861e-7c254713a5e0",
+            "username": "serelo",
+            "until": 0,
+            "reason": "IP banı"
+          },
+          "at": "2026-06-13T23:40:57.486Z"
+        },
+        {
+          "action": "unban",
+          "details": {
+            "userId": "",
+            "ip": "127.0.0.1"
+          },
+          "at": "2026-06-13T23:40:40.399Z"
+        },
+        {
+          "action": "ip-ban-by-username",
+          "details": {
+            "targetUserId": "95cb9bae-f4ea-424d-861e-7c254713a5e0",
+            "username": "serelo",
+            "ip": "127.0.0.1",
+            "until": 0,
+            "reason": "Yönetici kararı"
+          },
+          "at": "2026-06-13T23:38:19.280Z"
+        },
+        {
+          "action": "unban",
+          "details": {
+            "userId": "95cb9bae-f4ea-424d-861e-7c254713a5e0",
+            "ip": "unknown"
+          },
+          "at": "2026-06-13T23:32:50.861Z"
+        },
+        {
+          "action": "unban",
+          "details": {
+            "userId": "",
+            "ip": "::1"
+          },
+          "at": "2026-06-13T23:32:46.861Z"
+        },
+        {
+          "action": "unban",
+          "details": {
+            "userId": "",
+            "ip": "127.0.0.1"
+          },
+          "at": "2026-06-13T23:32:43.305Z"
+        },
+        {
+          "action": "ip-ban",
+          "details": {
+            "targetUserId": "95cb9bae-f4ea-424d-861e-7c254713a5e0",
+            "username": "serelo",
+            "until": 0,
+            "reason": "IP banı"
+          },
+          "at": "2026-06-13T23:31:51.945Z"
+        },
+        {
+          "action": "ip-ban-by-username",
+          "details": {
+            "targetUserId": "95cb9bae-f4ea-424d-861e-7c254713a5e0",
+            "username": "serelo",
+            "ip": "127.0.0.1",
+            "until": 0,
+            "reason": "Yönetici kararı"
+          },
+          "at": "2026-06-13T23:31:28.108Z"
+        },
+        {
+          "action": "unban",
+          "details": {
+            "userId": "",
+            "ip": "::1"
+          },
+          "at": "2026-06-13T23:31:21.123Z"
+        },
+        {
+          "action": "ip-ban-by-username",
+          "details": {
+            "targetUserId": "95cb9bae-f4ea-424d-861e-7c254713a5e0",
+            "username": "serelo",
+            "ip": "::1",
+            "until": 0,
+            "reason": "Yönetici kararı"
+          },
+          "at": "2026-06-13T23:30:58.560Z"
+        },
+        {
+          "action": "unban",
+          "details": {
+            "userId": "95cb9bae-f4ea-424d-861e-7c254713a5e0",
+            "ip": "unknown"
+          },
+          "at": "2026-06-13T23:23:33.582Z"
+        },
+        {
+          "action": "user-ban-by-username",
+          "details": {
+            "targetUserId": "95cb9bae-f4ea-424d-861e-7c254713a5e0",
+            "username": "serelo",
+            "until": 0,
+            "reason": "Yönetici kararı"
+          },
+          "at": "2026-06-13T23:18:00.384Z"
+        },
+        {
+          "action": "unban",
+          "details": {
+            "userId": "95cb9bae-f4ea-424d-861e-7c254713a5e0",
+            "ip": "unknown"
+          },
+          "at": "2026-06-13T23:04:29.387Z"
+        },
+        {
+          "action": "unban",
+          "details": {
+            "userId": "",
+            "ip": "::1"
+          },
+          "at": "2026-06-13T23:04:28.780Z"
+        },
+        {
+          "action": "ip-ban",
+          "details": {
+            "targetUserId": "95cb9bae-f4ea-424d-861e-7c254713a5e0",
+            "username": "serelo",
+            "until": 0,
+            "reason": "IP banı"
+          },
+          "at": "2026-06-13T23:02:49.696Z"
+        },
+        {
+          "action": "unban",
+          "details": {
+            "userId": "95cb9bae-f4ea-424d-861e-7c254713a5e0",
+            "ip": "unknown"
+          },
+          "at": "2026-06-13T23:02:34.136Z"
+        },
+        {
+          "action": "user-ban",
+          "details": {
+            "targetUserId": "95cb9bae-f4ea-424d-861e-7c254713a5e0",
+            "username": "serelo",
+            "until": 0,
+            "reason": "Kural ihlali"
+          },
+          "at": "2026-06-13T23:02:19.826Z"
+        },
+        {
+          "action": "unban",
+          "details": {
+            "userId": "95cb9bae-f4ea-424d-861e-7c254713a5e0",
+            "ip": "unknown"
+          },
+          "at": "2026-06-13T23:01:44.130Z"
+        },
+        {
+          "action": "user-ban",
+          "details": {
+            "targetUserId": "95cb9bae-f4ea-424d-861e-7c254713a5e0",
+            "username": "serelo",
+            "until": 1781392273407,
+            "reason": "Kural ihlali"
+          },
+          "at": "2026-06-13T23:01:13.407Z"
+        },
+        {
+          "action": "kick",
+          "details": {
+            "targetUserId": "95cb9bae-f4ea-424d-861e-7c254713a5e0",
+            "targetName": "serelo",
+            "reason": "salakmısın"
+          },
+          "at": "2026-06-13T23:00:58.452Z"
+        }
+      ],
+      "devices": {},
+      "networks": {}
+    }
+  }
+}

@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, interactive-widget=resizes-content" />
+  <meta name="theme-color" content="#eef8ff" />
+  <meta name="format-detection" content="telephone=no" />
+  <title>SFD Sketch</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png?v=web-final-20260615" />
+  <link rel="stylesheet" href="/style.css?v=neon-exact-20260615" />
+</head>
+<body>
+
+  <div id="lobbyScreen" class="lobby-screen">
+    <div class="lobby-window auth-lobby-window">
+      <div class="auth-top">
+        <div>
+          <div class="retro-logo lobby-home-logo" role="button" tabindex="0" title="Ana sayfaya dön"><img src="/neon-assets/sfd-logo.png" alt="SFD Sketch" /></div>
+          <div class="lobby-title">Kayıt ol, çiz, tahmin et, haftalık puanda yüksel.</div>
+        </div>
+        <div class="auth-top-actions">
+          <button id="rulesBtn" class="auth-small-btn hidden" type="button">Kurallar ve Talimatlar</button>
+          <button id="lobbySettingsBtn" class="auth-small-btn hidden" type="button">Settings</button>
+          <button id="lobbyFriendsBtn" class="auth-small-btn hidden" type="button">Arkadaşlar <span id="lobbyFriendsBadge" class="top-friends-badge hidden">0</span></button>
+          <button id="lobbyAdminBtn" class="auth-small-btn admin-lobby-btn hidden" type="button">🛡 Yönetim</button>
+          <button id="logoutBtn" class="auth-small-btn hidden">Çıkış Yap</button>
+        </div>
+      </div>
+
+      <div id="authPanel" class="auth-grid">
+        <div class="auth-card">
+          <div class="auth-tabs">
+            <button id="showLoginBtn" class="auth-tab active">Giriş Yap</button>
+            <button id="showRegisterBtn" class="auth-tab">Kayıt Ol</button>
+          </div>
+
+          <div id="loginForm" class="auth-form">
+            <h3>Hesaba Giriş</h3>
+            <input id="loginUser" type="text" placeholder="Kullanıcı adı veya e-posta" autocomplete="username" />
+            <input id="loginPassword" type="password" placeholder="Şifre" autocomplete="current-password" />
+            <button id="loginBtn" class="auth-main-btn">Giriş Yap</button>
+            <button id="forgotPasswordBtn" class="forgot-password-link" type="button">Şifreni mi unuttun?</button>
+          </div>
+
+          <div id="forgotPasswordForm" class="auth-form hidden">
+            <h3>Şifremi Unuttum</h3>
+            <p class="auth-note">Hesabında kayıtlı e-posta adresini yaz. Yeni şifre belirleme bağlantısı mail adresine gönderilecek.</p>
+            <input id="forgotPasswordEmail" type="email" placeholder="E-posta / Gmail adresi" autocomplete="email" />
+            <button id="sendPasswordResetBtn" class="auth-main-btn" type="button">Sıfırlama Bağlantısı Gönder</button>
+            <button id="backToLoginFromForgotBtn" class="forgot-password-link" type="button">Giriş ekranına dön</button>
+          </div>
+
+          <div id="resetPasswordForm" class="auth-form hidden">
+            <h3>Yeni Şifre Belirle</h3>
+            <p class="auth-note">Yeni şifren en az 6 karakter olmalı.</p>
+            <input id="resetPasswordInput" type="password" placeholder="Yeni şifre" autocomplete="new-password" />
+            <input id="resetPasswordAgainInput" type="password" placeholder="Yeni şifre tekrar" autocomplete="new-password" />
+            <button id="completePasswordResetBtn" class="auth-main-btn" type="button">Şifreyi Yenile</button>
+            <button id="backToLoginFromResetBtn" class="forgot-password-link" type="button">Giriş ekranına dön</button>
+          </div>
+
+          <div id="registerForm" class="auth-form hidden">
+            <h3>Yeni Kayıt</h3>
+            <div class="two-col">
+              <input id="regFirstName" type="text" placeholder="İsim" />
+              <input id="regLastName" type="text" placeholder="Soy isim" />
+            </div>
+            <div class="two-col">
+              <input id="regUsername" type="text" placeholder="Oyuncu adı" maxlength="18" />
+              <select id="regBirthDay">
+                <option value="">Gün</option>
+              </select>
+              <select id="regBirthMonth">
+                <option value="">Ay</option>
+              </select>
+              <input id="regBirthYear" type="number" placeholder="Yıl" min="1940" max="2026" />
+            </div>
+            <input id="regEmail" type="email" placeholder="Gmail / e-posta" />
+            <input id="regPhone" type="tel" placeholder="05*********" maxlength="11" inputmode="numeric" pattern="05[0-9]{9}" />
+            <div class="two-col">
+              <input id="regPassword" type="password" placeholder="Şifre" />
+              <input id="regPasswordAgain" type="password" placeholder="Şifre tekrar" />
+            </div>
+            <button id="registerBtn" class="auth-main-btn">Kayıt Ol</button>
+          </div>
+
+          <div id="verifyForm" class="auth-form hidden">
+            <h3>Doğrulama</h3>
+            <p class="auth-note">E-posta doğrulama kodu mailine gider. Telefon sadece kayıt bilgisi olarak alınır.</p>
+            <input id="emailCode" type="text" placeholder="E-posta kodu" maxlength="6" />
+            <button id="verifyBtn" class="auth-main-btn">Doğrula ve Giriş Yap</button>
+            <button id="resendCodeBtn" class="auth-small-btn resend-btn" type="button" disabled>Tekrar kod gönder (60)</button>
+          </div>
+
+          <div id="authMessage" class="auth-message"></div>
+        </div>
+
+        <div class="leaderboard-card">
+          <div class="leaderboard-head">
+            <h3>Haftalık Top 10</h3>
+            <div id="myRankBox" class="my-rank">Sıralaman: -</div>
+          </div>
+          <div id="topList" class="top-list"></div>
+          <button id="showAllPlayersBtn" class="all-players-btn">Tüm oyuncuları göster</button>
+        </div>
+      </div>
+
+      <div id="roomPanel" class="hidden">
+
+        <div class="logged-leaderboard-card">
+          <div class="leaderboard-head">
+            <h3>Haftalık Top 10</h3>
+            <div id="myRankBoxLoggedIn" class="my-rank">Sıralaman: -</div>
+          </div>
+          <div id="topListLoggedIn" class="top-list logged-top-list"></div>
+          <button id="showAllPlayersBtnLoggedIn" class="all-players-btn">Tüm oyuncuları göster</button>
+        </div>
+
+
+        <div class="room-sections">
+          <div class="room-box public-room-box">
+            <h3>Odalar</h3>
+            <p>Karışık, Filmler ve Hayvanlar odalarından birini seçip hemen oyuna katıl.</p>
+            <div id="globalRoomsList" class="room-list"></div>
+          </div>
+
+          <div class="room-box private-room-box hidden-private-room-box" aria-hidden="true">
+            <h3>Özel Şifreli Oda</h3>
+            <p>Arkadaşlarınla özel oynamak için oda kur.</p>
+            <input id="privateRoomName" type="text" placeholder="Oda adı" maxlength="24" />
+            <input id="privateRoomPassword" type="password" placeholder="Oda şifresi" maxlength="24" />
+            <textarea id="privateRoomWords" class="private-word-list-input" placeholder="Özel kelimeler (virgülle veya alt alta ayır). Boş bırakırsan klasik kelimeler kullanılır." maxlength="6000"></textarea>
+            <button id="createPrivateRoomBtn">Özel Oda Kur</button>
+            <h3>Özel Odalar</h3>
+            <div id="privateRoomsList" class="room-list private-list"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="adminLobbyModal" class="modal hidden">
+      <div class="modal-box admin-lobby-settings-box">
+        <div class="modal-window-head">
+          <h3>👑 SFD SKETCH Yönetim Paneli</h3>
+          <button id="adminLobbyCloseBtn" class="modal-x-btn" type="button">×</button>
+        </div>
+        <p class="admin-lobby-note">Bu panel ana sayfada ve oyun içinde aynıdır. Admin çizim sırasına, oyuncu sayısına, tahmine veya vote hesaplarına dahil edilmez.</p>
+        <label class="admin-stealth-option" for="adminLobbyStealthToggle">
+          <input id="adminLobbyStealthToggle" type="checkbox" />
+          <span><b>Odalarda gizli görün</b><small>Users listesinde, oda sayısında ve giriş bildiriminde görünmeden yönetim yap.</small></span>
+        </label>
+        <section class="admin-lobby-ban-section">
+          <h4>Kullanıcı Adıyla Hesap Banla</h4>
+          <div class="admin-ban-create-grid">
+            <input id="adminLobbyBanUsername" type="text" maxlength="18" autocomplete="off" spellcheck="false" placeholder="Kullanıcı adı" />
+            <select id="adminLobbyBanDuration">
+              <option value="600000">10 dakika</option>
+              <option value="3600000">1 saat</option>
+              <option value="86400000">24 saat</option>
+              <option value="604800000">7 gün</option>
+              <option value="0">Kalıcı Ban</option>
+              <option value="ip">IP Ban (Kalıcı)</option>
+            </select>
+            <input id="adminLobbyBanReason" type="text" maxlength="160" autocomplete="off" placeholder="Ban sebebi (isteğe bağlı)" />
+            <button id="adminLobbyBanBtn" type="button">Hesabı Banla</button>
+          </div>
+        </section>
+
+
+        <div class="admin-lobby-ban-columns">
+          <section>
+            <h4>Aktif Hesap Banları</h4>
+            <div id="adminLobbyUserBans" class="admin-ban-list"></div>
+          </section>
+          <section>
+            <h4>Aktif IP Banları</h4>
+            <div id="adminLobbyIpBans" class="admin-ban-list"></div>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <div id="allPlayersModal" class="modal hidden">
+      <div class="modal-box all-players-modal-box">
+        <div class="modal-window-head all-players-modal-head">
+          <h3>Tüm Oyuncular</h3>
+          <button id="closeAllPlayersBtn" class="modal-x-btn" type="button" aria-label="Kapat">×</button>
+        </div>
+        <div id="allPlayersList" class="all-players-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="gameScreen" class="game-screen hidden">
+    <div class="top-bar">
+      <div class="logo-area game-home-logo" role="button" tabindex="0" title="Ana sayfaya dön"><img src="/neon-assets/sfd-logo.png" alt="SFD Sketch" /></div>
+
+      <div class="game-info">
+        <div>Round <span id="roundText">1</span> / <span id="totalRoundText">10</span> - <b id="roomNameText">Oda</b></div>
+        <div>Drawer: <span id="drawerText">Bekleniyor</span></div>
+        <div id="wordLine" class="game-word-line hidden"><span id="wordLabel">İpucu:</span> <span id="wordText"></span></div>
+      </div>
+
+      <div id="drawerSecretWord" class="drawer-secret-word hidden"></div>
+      <div class="header-action-area">
+        <button id="menuBtn" class="top-mini-btn">Menu</button>
+        <button id="settingsBtn" class="top-mini-btn">Settings</button>
+        <button id="topFriendsBtn" class="top-mini-btn">Arkadaşlar <span id="topFriendsBadge" class="top-friends-badge hidden">0</span></button>
+      </div>
+
+      <div class="timer-box">
+        <div id="timerCircle">90</div>
+      </div>
+    </div>
+
+    <div id="adminToolbar" class="admin-toolbar hidden" aria-label="SFD SKETCH yönetim araçları">
+      <div class="admin-toolbar-title"><span class="admin-crown">👑</span> SFD SKETCH</div>
+      <div id="adminCurrentWord" class="admin-current-word">Kelime: -</div>
+      <button id="adminPauseBtn" type="button">⏸ Durdur</button>
+      <button id="adminSkipBtn" type="button">⏭ Çizimi Atlat</button>
+      <button id="adminClearBtn" type="button">🧹 Çizimi Temizle</button>
+      <button id="adminPanelBtn" type="button">🛡 Yönetim</button>
+    </div>
+
+    <div class="main-layout">
+      <div class="left-column">
+        <div id="mobilePanelTabs" class="mobile-panel-tabs" role="tablist" aria-label="Mobil oyun panelleri">
+          <button type="button" class="mobile-panel-tab" data-mobile-panel="players" role="tab" aria-selected="false">Oyuncular</button>
+          <button type="button" class="mobile-panel-tab active" data-mobile-panel="guess" role="tab" aria-selected="true">Tahmin</button>
+          <button type="button" class="mobile-panel-tab" data-mobile-panel="chat" role="tab" aria-selected="false">Chat</button>
+        </div>
+        <div class="panel users-panel">
+          <div class="panel-title users-title-row">
+          <span>OYUNCULAR (<span id="userCountText">0</span>)</span>
+          <button id="awayToggleBtn" class="away-toggle-btn" type="button">○ AWAY</button>
+        </div>
+          <ul id="playersList"></ul>
+        </div>
+
+        <div class="panel game-log-panel">
+          <div class="panel-title center">OYUN / TAHMİN</div>
+          <div id="gameMessages"></div>
+        </div>
+
+        <div class="message-row">
+          <div id="messageComposerShell" class="message-composer-shell">
+            <div id="whisperTargetBox" class="whisper-target-box hidden" title="F1 ile fısıltı hedefini değiştir">
+              <span class="whisper-to-label">Kime:</span>
+              <input id="whisperTargetInput" type="text" maxlength="18" autocomplete="off" spellcheck="false" placeholder="oyuncu adı" />
+              <button id="whisperTargetAcceptBtn" class="whisper-target-accept" type="button" title="Hedefi seç">✓</button>
+              <button id="whisperTargetCloseBtn" class="whisper-target-close" type="button" title="Fısıltı modunu kapat">×</button>
+            </div>
+            <input id="mainMessageInput" name="sfd-live-message" type="text" inputmode="text" enterkeyhint="send" aria-label="Tahmin veya sohbet mesajı" placeholder="Tahmin için sarı alana, sohbet için chat alanına tıkla..." maxlength="200" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" aria-autocomplete="none" data-lpignore="true" data-1p-ignore="true" data-bwignore="true" data-form-type="other" />
+          </div>
+          <div class="chat-emoji-wrap">
+            <button id="chatEmojiBtn" class="chat-emoji-btn" type="button" title="Chat emojileri">😊</button>
+            <div id="chatEmojiPicker" class="chat-emoji-picker whatsapp-emoji-picker hidden">
+              <div class="emoji-panel-head">
+                <div>
+                  <b>Emojiler</b>
+                  <span>Sadece Chat alanına eklenir</span>
+                </div>
+                <button id="chatEmojiCloseBtn" class="emoji-close-btn" type="button" title="Kapat">×</button>
+              </div>
+              <div id="emojiRecentRow" class="emoji-recent-row hidden"></div>
+              <div id="emojiCategoryTabs" class="emoji-category-tabs"></div>
+              <div id="emojiGrid" class="emoji-grid"></div>
+            </div>
+          </div>
+          <button id="sendMainMessageBtn">Gönder</button>
+          <button id="hintBtn" class="turn-btn hidden">HINT</button>
+          <button id="skipBtn" class="turn-btn danger hidden">SKIP</button>
+          <button id="doneBtn" class="turn-btn done-state hidden">DONE</button>
+        </div>
+
+        <div class="panel chat-panel">
+          <div class="panel-title">SOHBET</div>
+          <div id="chatMessages"></div>
+        </div>
+      </div>
+
+      <div class="right-column">
+        <div class="draw-header">
+          <div id="viewerStatus" class="viewer-status">
+            <span id="viewerStatusText">Çizim sırası sende değil. Sadece izliyorsun.</span>
+            <button id="afkVoteBtn" class="afk-vote-btn hidden" type="button" title="Çizen oyuncuyu raporla ve turu atlat oylaması başlat">
+              <img class="afk-vote-warning-image" src="/images/afk_vote_warning.png?v=away-vote-v30-20260614" alt="Çizeni raporla" />
+            </button>
+          </div>
+
+          <div id="drawToolsBar" class="inline-tools hidden">
+            <button class="tool-btn active" data-tool="pencil" title="Kalem"><img src="/neon-assets/pencil.png" alt="" /><span>Kalem</span></button>
+            <button class="tool-btn" data-tool="watercolor" title="Sulu boya"><img src="/neon-assets/watercolor.png" alt="" /><span>Sulu</span></button>
+            <button class="tool-btn" data-tool="spray" title="Sprey"><img src="/neon-assets/spray.png" alt="" /><span>Sprey</span></button>
+            <button class="tool-btn" data-tool="eraser" title="Silgi"><img src="/neon-assets/eraser.png" alt="" /><span>Silgi</span></button>
+            <button class="tool-btn" data-tool="fill" title="Dolgu"><img src="/neon-assets/fill.png" alt="" /><span>Dolgu</span></button>
+            <button class="tool-btn" data-tool="line" title="Düz çizgi"><img src="/neon-assets/line.png" alt="" /><span>Çizgi</span></button>
+            <button class="tool-btn" data-tool="circle" title="Daire çiz"><img src="/neon-assets/circle.png" alt="" /><span>Daire</span></button>
+            <button class="tool-btn" data-tool="box" title="Normal sürükle = dikdörtgen, Shift = tam kare"><img src="/neon-assets/box.png" alt="" /><span>Kare</span></button>
+
+            <div class="size-control">
+              <span>Kalınlık</span>
+              <div class="brush-preset-group" aria-label="Fırça boyutu">
+                <button class="brush-preset-btn active" type="button" data-brush-size="2">İnce</button>
+                <button class="brush-preset-btn" type="button" data-brush-size="8">Orta</button>
+                <button class="brush-preset-btn" type="button" data-brush-size="18">Kalın</button>
+              </div>
+              <input type="range" id="lineWidth" min="1" max="40" value="2" />
+              <b id="sizeValue">2</b>
+            </div>
+
+            <div id="colorPalette" class="color-palette"></div>
+
+            <div class="custom-color">
+              <span>Özel</span>
+              <input type="color" id="customColorPicker" value="#000000" title="Özel renk" />
+            </div>
+            <button id="clearBtn" class="clear-btn hidden">Temizle</button>
+          </div>
+        </div>
+
+        <div class="canvas-area">
+          <canvas id="drawCanvas" width="1400" height="850"></canvas>
+          <img class="canvas-watermark" src="/neon-assets/sfd-logo.png" alt="" aria-hidden="true" />
+
+          <div id="earHintIndicator" class="ear-hint-indicator hidden" aria-live="polite">👂 Ses benzerliği / kafiye ipucu</div>
+
+          <div id="intermissionOverlay" class="intermission-overlay hidden" aria-live="polite">
+            <div class="intermission-card">
+              <div class="intermission-title">Doğru Cevap</div>
+              <div id="intermissionWord" class="intermission-word">-</div>
+              <div id="intermissionCountdown" class="intermission-countdown">Sıradaki çizime 5 saniye...</div>
+            </div>
+          </div>
+
+          <div id="skipVoteOverlay" class="skip-vote-overlay hidden" aria-live="assertive">
+            <div class="skip-vote-card">
+              <button id="skipVoteCloseBtn" class="skip-vote-close" type="button" aria-label="Kapat">×</button>
+              <div class="skip-vote-icon">⚠️</div>
+              <div class="skip-vote-title">Turu Atlat Oylaması</div>
+              <div id="skipVoteDescription" class="skip-vote-description">Çizen oyuncunun turu atlatılsın mı?</div>
+              <div id="skipVoteProgress" class="skip-vote-progress">0 / 0 evet</div>
+              <div class="skip-vote-actions">
+                <button id="skipVoteYesBtn" class="skip-vote-yes" type="button">Evet, Turu Atlat</button>
+                <button id="skipVoteNoBtn" class="skip-vote-no" type="button">Hayır</button>
+              </div>
+              <div id="skipVoteLockedText" class="skip-vote-locked hidden">Çizen oyuncu oy kullanamaz.</div>
+            </div>
+          </div>
+
+          <div id="winnerOverlay" class="winner-overlay hidden" aria-live="polite">
+            <div id="winnerFireworks" class="winner-fireworks"></div>
+            <div id="winnerConfetti" class="winner-confetti"></div>
+            <div class="winner-card">
+              <div class="winner-crown" aria-hidden="true">👑</div>
+              <div class="winner-title">OYUN KAZANANI</div>
+              <div id="winnerName" class="winner-name">Oyuncu</div>
+              <div id="winnerScore" class="winner-score">0 PUAN</div>
+              <div class="winner-subtitle">10 round sonunda en yüksek puanla zirvede!</div>
+              <div id="winnerCountdown" class="winner-countdown">Yeni oyun 15 saniye içinde başlıyor...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div id="rulesModal" class="modal hidden">
+    <div class="rules-window">
+      <div class="rules-topbar">
+        <div>
+          <div class="rules-kicker">SFD SKETCH</div>
+          <h2>Kurallar ve Talimatlar</h2>
+          <p>Oyuna katılan her oyuncu bu kuralları kabul etmiş sayılır. Burada yalnızca güncel oyun kuralları ve kullanılan özellikler yer alır.</p>
+        </div>
+        <button id="rulesCloseBtn" class="rules-close-btn" type="button" aria-label="Kapat">×</button>
+      </div>
+
+      <div class="rules-layout">
+        <nav class="rules-sidebar" aria-label="Kurallar menüsü">
+          <button class="rules-tab active" data-rules-tab="intro">Başlangıç</button>
+          <button class="rules-tab" data-rules-tab="play">Nasıl Oynanır?</button>
+          <button class="rules-tab" data-rules-tab="drawing">Çizim Kuralları</button>
+          <button class="rules-tab" data-rules-tab="chat">Tahmin ve Chat</button>
+          <button class="rules-tab" data-rules-tab="score">Puanlama</button>
+          <button class="rules-tab" data-rules-tab="afk">AFK, AWAY ve Vote</button>
+          <button class="rules-tab" data-rules-tab="rooms">Odalar ve Top 10</button>
+          <button class="rules-tab" data-rules-tab="conduct">Davranış Kuralları</button>
+        </nav>
+
+        <div class="rules-content">
+          <section class="rules-panel active" data-rules-panel="intro">
+            <div class="rules-hero-card">
+              <span class="rules-hero-icon">✏️</span>
+              <div>
+                <h3>SFD Sketch'e hoş geldin</h3>
+                <p>Bir oyuncu verilen kelimeyi çizer, diğer oyuncular tahmin eder. Amaç anlaşılır çizmek, hızlı bilmek ve oyunu en yüksek puanla tamamlamaktır.</p>
+              </div>
+            </div>
+            <h4>Hızlı başlangıç</h4>
+            <ol>
+              <li>Giriş yapıp global veya özel bir odaya katıl.</li>
+              <li>AWAY olmayan en az 2 aktif oyuncu olduğunda 5 saniyelik geri sayım başlar.</li>
+              <li>İlk çizen, geri sayım bitene kadar odada bulunan AWAY olmayan oyuncular arasından rastgele seçilir.</li>
+              <li>Sonraki çizimler normal sırayla devam eder; oyun sırasında katılan oyuncu çizim sırasına yeni roundda girer.</li>
+              <li>Tahmin için <b>Game / Tahmin</b>, normal konuşma için <b>Chat</b> alanını kullan.</li>
+            </ol>
+          </section>
+          <section class="rules-panel" data-rules-panel="play">
+            <h3>Oyun nasıl ilerler?</h3>
+            <ul>
+              <li>Oyun 10 round sürer. Bir round, sıradaki aktif oyuncuların birer kez çizmesiyle tamamlanır.</li>
+              <li>Her çizim 90 saniyedir. İlk doğru tahminden sonra kalan süre 20 saniyeye iner.</li>
+              <li>Tüm uygun tahminciler bildiğinde, süre dolduğunda veya çizen <b>DONE</b> kullandığında çizim sona erer.</li>
+              <li>İlk doğru tahminden önce <b>SKIP</b> kullanılabilir. SKIP edilen çizimde kelime açıklanmaz ve çizim tamamlanmış tur sayılmaz.</li>
+              <li>Çizen oyuncu Chat ve tahmin alanlarını görür fakat bu alanlara yazamaz.</li>
+              <li>Oyun sonunda kazanan 15 saniye gösterilir ve ardından yeni oyun otomatik başlar.</li>
+              <li>Oyuncu odadan yanlışlıkla çıkarsa 1 dakika içinde aynı odaya döndüğünde oda puanı korunur; dönmezse oda puanı sıfırlanır.</li>
+            </ul>
+          </section>
+          <section class="rules-panel" data-rules-panel="drawing">
+            <h3>Çizim kuralları</h3>
+            <div class="rules-do-dont">
+              <div class="rules-do-card">
+                <h4>Yapılabilir</h4>
+                <ul>
+                  <li>Kalem, sulu boya, sprey, silgi, dolgu, daire, kare ve renk araçlarını kullanmak.</li>
+                  <li>Şekil, yön, adet ve görsel çağrışımlarla kelimeyi anlatmak.</li>
+                  <li>Kulak düğmesiyle ses benzerliği/kafiye ipucu vermek.</li>
+                  <li>HINT kullanmak: ilk basışta harf sayısı, sonraki basışlarda rastgele harf görünür; son gizli harf açılmaz.</li>
+                </ul>
+              </div>
+              <div class="rules-dont-card">
+                <h4>Yapılamaz</h4>
+                <ul>
+                  <li>Kelimeyi, harfini, hecesini veya cevabı açık eden yazıları çizmek.</li>
+                  <li>Chat üzerinden cevabı veya doğrudan yönlendiren ipucunu paylaşmak.</li>
+                  <li>Hakaret, uygunsuz içerik veya rahatsız edici çizim yapmak.</li>
+                  <li>Kasıtlı olarak çizmemek ya da oyunu sabote etmek.</li>
+                </ul>
+              </div>
+            </div>
+            <p>Kural dışı çizimler sarı ünlem üzerinden oyuncu oylamasına açılabilir.</p>
+          </section>
+          <section class="rules-panel" data-rules-panel="chat">
+            <h3>Tahmin, Chat ve fısıltı</h3>
+            <ul>
+              <li>Tahminler yalnızca <b>Game / Tahmin</b> alanına, normal mesajlar yalnızca <b>Chat</b> alanına yazılır.</li>
+              <li>Doğru bilen oyuncunun tahmin alanı gri olur; o turda tekrar tahmin yapamaz ve Chat kullanmaya devam eder.</li>
+              <li>AWAY oyuncu tahmin yapamaz; yalnızca Chat ve fısıltı kullanabilir.</li>
+              <li>Chat'te <b>:)</b>, <b>:D</b>, <b>;)</b>, <b>&lt;3</b> gibi kısayollar emojiye dönüşebilir.</li>
+              <li><b>F1</b> ile veya oyuncuya sağ tıklayıp <b>Fısıltı</b> seçerek özel mesaj gönderebilirsin.</li>
+              <li>Fısıltılar farklı odalardaki çevrimiçi oyunculara da gider; yalnızca gönderen ve alıcı görür, gelen fısıltıda özel ses çalar.</li>
+              <li>Tahmin veya Chat alanına tıklamak fısıltı modunu kapatır; F1'e tekrar basınca son hedef hatırlanır.</li>
+              <li>Engellediğin oyuncuyla Chat ve fısıltı iletişimi kurulmaz.</li>
+              <li>Spam, reklam, hakaret, taciz ve kişisel bilgi paylaşımı yasaktır.</li>
+            </ul>
+          </section>
+          <section class="rules-panel" data-rules-panel="score">
+            <h3>Puanlama sistemi</h3>
+            <div class="rules-score-grid">
+              <div class="rules-score-card">
+                <h4>Çizen oyuncu</h4>
+                <p>İlk doğru tahminde <b>10 puan</b> kazanır.</p>
+                <p>Sonraki her doğru bilen için <b>+1 puan</b> alır; tur başına en fazla <b>15 puan</b> kazanabilir.</p>
+                <p>Her HINT kullanımı çizenin tur puanından <b>2 puan</b> düşürür; tur puanı 0'ın altına inmez.</p>
+              </div>
+              <div class="rules-score-card">
+                <h4>Tahminci</h4>
+                <p>İlk doğru bilen <b>10</b>, ikinci <b>9</b>, üçüncü <b>8</b> puan alır.</p>
+                <p>Puan sıralamaya göre azalır ve doğru bilen oyuncuya en az <b>5 puan</b> verilir.</p>
+              </div>
+            </div>
+            <h4>Haftalık Top 10</h4>
+            <ul>
+              <li>Oda puanı her yeni oyunda sıfırdan başlar; haftalık puandan ayrıdır.</li>
+              <li>Yalnızca global odalarda oyun sonundaki derece puanları haftalık listeye eklenir.</li>
+              <li>Özel odalarda kazanılan puanlar Top 10'a eklenmez.</li>
+              <li>Vote ile iptal edilen çizimde o turda dağıtılan puanlar geri alınır.</li>
+            </ul>
+          </section>
+          <section class="rules-panel" data-rules-panel="afk">
+            <h3>AFK, AWAY ve Turu Atlat oylaması</h3>
+            <ul>
+              <li>Çizen ilk 15 saniyede çizim yapmazsa sıra otomatik geçer. Bu sürede doğru tahmin gelirse çizim aktif kabul edilir ve devam eder.</li>
+              <li>Aynı oyuncu bir oyun içinde ikinci kez çizim yapmadığı için atlanırsa otomatik AWAY olur.</li>
+              <li>AWAY oyuncu çizim sırasına girmez, tahmin yapamaz, puan kazanamaz ve vote kullanamaz; yalnızca Chat/fısıltı kullanabilir.</li>
+              <li>AWAY kapatıldığında oyuncu çizim kuyruğunun sonuna eklenir. Vote kullanabilmek için aktif şekilde 1 round tamamlaması gerekir.</li>
+              <li>Vote butonu yalnızca AWAY olmayan en az 3 aktif oyuncu varken kullanılabilir. Oyun sırasında yeni katılan oyuncu da 1 round tamamlamadan vote kullanamaz.</li>
+              <li>Oylama 15 saniye sürer. Başlatanın ekranı açılır; diğer uygun oyuncularda ünlem sarı-kırmızı yanıp söner ve düdük sesi çalar.</li>
+              <li>Diğer oyuncular ünleme basarak oylamaya katılır. Çizen oyuncu oylamayı görmez ve oy kullanamaz.</li>
+              <li>Oylama kabul edilirse çizim iptal edilir, tur puanları geri alınır ve çizenden <b>10 puan</b> düşülür.</li>
+              <li>Vote başlatmak tek başına ceza vermez. Oylama geçersiz kalırsa yalnızca oylamayı başlatıp ayrıca <b>Evet</b> veren oyuncudan <b>5 puan</b> düşülür.</li>
+              <li>Bir oyuncu 10 raundluk oyun boyunca en fazla <b>5 vote</b> başlatabilir.</li>
+              <li>Aynı oyuncu bir raundda yalnızca <b>1 kez</b> vote başlatabilir; ikinci kullanım için sonraki raundu beklemelidir.</li>
+              <li>Aynı çizen iki kez geçerli vote cezası alırsa sonraki oylamada <b>1 Evet</b> yeterlidir.</li>
+            </ul>
+            <div class="rules-warning"><b>Vote yalnızca kural ihlali için kullanılmalıdır.</b> Haksız veya organize oylama yasaktır.</div>
+          </section>
+          <section class="rules-panel" data-rules-panel="rooms">
+            <h3>Odalar, arkadaşlar ve etkileşim</h3>
+            <ul>
+              <li>Global odalar şifresizdir ve temaya göre kelime havuzu kullanır; oda başına en fazla 20 oyuncu bulunabilir.</li>
+              <li>Özel odalar şifrelidir; kurucu kendi kelimelerini virgülle veya alt alta yazarak ekleyebilir.</li>
+              <li>Bir hesap aynı anda yalnızca bir odada bulunabilir.</li>
+              <li>Oyuncuya sağ tıklayarak arkadaş ekleme/çıkarma, engelleme, fısıltı ve sesli etkileşim seçeneklerine ulaşabilirsin.</li>
+              <li>Arkadaşlık istekleri Arkadaşlar penceresinden kabul, silme veya engelleme ile yönetilir.</li>
+              <li>Alkış, gülme, tokat, ıslık ve öpücük gibi sesli etkileşimleri odadaki oyuncular duyar.</li>
+              <li>Odaya yeni oyuncu geldiğinde giriş sesi; çizim sırası sana geldiğinde sıra sesi çalar.</li>
+            </ul>
+          </section>
+          <section class="rules-panel" data-rules-panel="conduct">
+            <h3>Davranış ve güvenlik</h3>
+            <ul>
+              <li>Hakaret, tehdit, ayrımcılık, cinsel taciz, zorbalık ve rahatsız edici içerik yasaktır.</li>
+              <li>Kişisel bilgi istemek, paylaşmak veya başka biri gibi davranmak yasaktır.</li>
+              <li>Hile, bot, otomasyon, açık istismarı ve oyunun işleyişini bozan araçlar yasaktır.</li>
+              <li>Spam, reklam ve organize vote kötüye kullanımı yasaktır.</li>
+              <li><b>SFD SKETCH</b> yönetici hesabı çizim sırasına, puana, vote hesabına ve minimum oyuncu sayısına katılmadan odaları denetleyebilir; oyunu durdurabilir, çizimi atlatabilir, alanı temizleyebilir ve ihlal yapan oyuncuya geçici, kalıcı veya IP yasağı uygulayabilir.</li>
+              <li>Yönetici ana sayfadaki Yönetim düğmesinden gizli oda modunu açabilir; bu modda Users listesinde, oda sayısında ve giriş bildiriminde görünmez.</li>
+              <li>Yönetici mesajları özel altın renkli görünür ve bütün oyuncular tarafından görülür.</li>
+              <li>Hata gördüğünde <b>Settings &gt; Hata Bildir</b> bölümünü kullan.</li>
+            </ul>
+            <h4>Yaptırımlar</h4>
+            <p>İhlalin ağırlığına göre uyarı, puan düşürme, mesaj engeli, odadan çıkarma, geçici yasak veya hesap kısıtlaması uygulanabilir.</p>
+            <div class="rules-footer-note">Kurallar adil ve güvenli oyun için gerektiğinde güncellenebilir.</div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="gameMenuModal" class="modal hidden">
+    <div class="modal-box small-game-modal settings-window menu-window">
+      <div class="modal-window-head">
+        <h3>Menu</h3>
+        <button id="menuCloseBtn" class="modal-x-btn" type="button" aria-label="Kapat">×</button>
+      </div>
+      <button id="menuBackLobbyBtn">Lobiye Dön</button>
+      <button id="menuRulesBtn">Kurallar ve Talimatlar</button>
+    </div>
+  </div>
+
+  <div id="settingsModal" class="modal hidden">
+    <div class="modal-box small-game-modal settings-window">
+      <div class="modal-window-head">
+        <h3>Settings</h3>
+        <button id="settingsCloseBtn" class="modal-x-btn" type="button" aria-label="Kapat">×</button>
+      </div>
+
+      <div class="settings-block">
+        <div class="setting-line modern-setting-line sound-master-line">
+          <div class="setting-label-block">
+            <b>Sesler</b>
+            <div class="setting-sub">Oyun içi efekt seslerini aç veya kapat.</div>
+          </div>
+
+          <div class="inline-volume-box">
+            <input id="soundVolumeSlider" type="range" min="0" max="100" value="75" />
+            <span id="soundVolumeValue">75%</span>
+          </div>
+
+          <label class="sound-toggle-wrap">
+            <input id="soundSettingToggle" type="checkbox" checked />
+            <span id="soundSettingText">Açık</span>
+          </label>
+        </div>
+
+        <div class="theme-setting-box compact-theme-setting">
+          <div>
+            <b>Tema</b>
+            <div class="setting-sub">Oyunun genel renk tonunu seç.</div>
+          </div>
+          <button id="openThemeModalBtn" class="auth-small-btn settings-action-btn" type="button">Tema Seç</button>
+        </div>
+
+        <button id="openFeedbackModalBtn" class="auth-small-btn settings-action-btn" type="button">Hata Bildir</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="themeModal" class="modal hidden">
+    <div class="modal-box small-game-modal settings-window theme-window">
+      <div class="modal-window-head">
+        <h3>Tema Seç</h3>
+        <button id="themeCloseBtn" class="modal-x-btn" type="button" aria-label="Kapat">×</button>
+      </div>
+
+      <div class="theme-modal-list">
+        <button class="theme-choice-btn active" type="button" data-theme="light">
+          <span>Açık Ton</span>
+          <small>Ferah beyaz / açık mavi görünüm</small>
+        </button>
+        <button class="theme-choice-btn" type="button" data-theme="dark">
+          <span>Gece Modu</span>
+          <small>Koyu gece görünümü</small>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="feedbackModal" class="modal hidden">
+    <div class="modal-box small-game-modal settings-window feedback-window">
+      <div class="modal-window-head">
+        <h3>Hata Bildir</h3>
+        <button id="feedbackCloseBtn" class="modal-x-btn" type="button" aria-label="Kapat">×</button>
+      </div>
+      <div class="feedback-box standalone-feedback-box">
+        <textarea id="feedbackText" placeholder="Gördüğün hatayı yaz..."></textarea>
+        <button id="sendFeedbackBtn" class="auth-main-btn" type="button">Hata Bildir</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="friendsModal" class="modal hidden">
+    <div class="discord-friends-window">
+      <div class="discord-friends-sidebar">
+        <div class="discord-friends-sidebar-title">ARKADAŞLAR</div>
+        <button class="discord-friend-tab active" data-tab="add">Arkadaş Ekle</button>
+        <button class="discord-friend-tab" data-tab="friends">Arkadaşlar</button>
+        <button class="discord-friend-tab" data-tab="online">Çevrimiçi</button>
+        <button class="discord-friend-tab" data-tab="all">Tümü</button>
+        <button class="discord-friend-tab" data-tab="pending">Bekleyen <span id="discordPendingBadge" class="discord-inline-badge hidden">0</span></button>
+        <button class="discord-friend-tab" data-tab="blocked">Engellenen</button>
+      </div>
+
+      <div class="discord-friends-main">
+        <div class="discord-friends-topbar">
+          <div>
+            <div id="discordFriendsTitle" class="discord-friends-title">Arkadaş Ekle</div>
+            <div id="discordFriendsSubtitle" class="discord-friends-subtitle">Arkadaşlarını kullanıcı adı ile ekleyebilirsin.</div>
+          </div>
+          <button id="friendsModalCloseBtn" class="discord-friends-close" type="button" aria-label="Kapat">×</button>
+        </div>
+
+        <div class="discord-friends-content">
+          <div class="discord-tab-panel active" data-panel="add">
+            <div class="discord-add-box">
+              <label for="modalFriendUsernameInput">ARKADAŞ EKLE</label>
+              <p>Arkadaşının kullanıcı adını gir ve ona istek gönder.</p>
+              <div class="discord-add-row">
+                <input id="modalFriendUsernameInput" type="text" placeholder="kullaniciadi" maxlength="18" />
+                <button id="modalSendFriendRequestBtn">Arkadaşlık İsteği Gönder</button>
+              </div>
+              <div id="modalFriendMessage" class="discord-status-message"></div>
+            </div>
+            <div class="discord-empty-illustration">Arkadaşlarını eklediğinde burada daha hızlı birlikte oyun kurabileceksin.</div>
+          </div>
+
+          <div class="discord-tab-panel" data-panel="friends">
+            <div id="modalFriendsList" class="discord-list-box"></div>
+          </div>
+
+          <div class="discord-tab-panel" data-panel="online">
+            <div id="modalOnlineList" class="discord-list-box"></div>
+          </div>
+
+          <div class="discord-tab-panel" data-panel="all">
+            <div id="modalAllFriendsList" class="discord-list-box"></div>
+          </div>
+
+          <div class="discord-tab-panel" data-panel="pending">
+            <div class="discord-pending-grid">
+              <div>
+                <div class="discord-section-title">Gelen İstekler</div>
+                <div id="modalFriendRequestsList" class="discord-list-box"></div>
+              </div>
+              <div>
+                <div class="discord-section-title">Gönderilenler</div>
+                <div id="modalSentRequestsList" class="discord-list-box"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="discord-tab-panel" data-panel="blocked">
+            <div id="modalBlockedList" class="discord-list-box"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="passwordModal" class="modal hidden">
+    <div class="modal-box">
+      <h3>Şifreli Oda</h3>
+      <p id="modalRoomName"></p>
+      <input id="joinPrivatePassword" type="password" placeholder="Oda şifresi" />
+      <button id="confirmPrivateJoinBtn">Odaya Gir</button>
+      <button id="cancelPrivateJoinBtn">İptal</button>
+    </div>
+  </div>
+
+  
+  <div id="playerContextMenu" class="player-context-menu hidden">
+    <button id="ctxWhisperBtn" class="ctx-whisper-btn" type="button">💬 Fısıltı</button>
+    <button id="ctxAddFriendBtn" type="button">Arkadaş Ekle</button>
+    <button id="ctxBlockBtn" type="button">Oyuncuyu Engelle</button>
+
+    <div id="adminContextSection" class="admin-context-section hidden">
+      <div class="context-menu-separator"></div>
+      <div class="context-menu-title admin-context-title">SFD SKETCH Yönetimi</div>
+      <div class="admin-context-grid">
+        <button id="ctxAdminKickBtn" type="button">Odadan At</button>
+        <button id="ctxAdminSkipBtn" type="button">Çizimini Atlat</button>
+        <button class="ctx-admin-ban-btn" data-duration="600000" type="button">10 dk Ban</button>
+        <button class="ctx-admin-ban-btn" data-duration="3600000" type="button">1 Saat Ban</button>
+        <button class="ctx-admin-ban-btn" data-duration="86400000" type="button">24 Saat Ban</button>
+        <button class="ctx-admin-ban-btn danger" data-duration="0" type="button">Kalıcı Ban</button>
+        <button id="ctxAdminIpBanBtn" class="danger admin-wide" type="button">Kalıcı IP Ban</button>
+      </div>
+    </div>
+
+    <div class="context-menu-separator"></div>
+    <div class="context-menu-title">Sesli Etkileşim</div>
+    <div class="reaction-menu-grid">
+      <button class="ctx-reaction-btn" data-reaction="applause" type="button"><span>👏</span> Alkış</button>
+      <button class="ctx-reaction-btn" data-reaction="laugh" type="button"><span>😂</span> Gülmek</button>
+      <button class="ctx-reaction-btn" data-reaction="slap" type="button"><span>✋</span> Tokat</button>
+      <button class="ctx-reaction-btn" data-reaction="flirt" type="button"><span>🎶</span> Islık</button>
+      <button class="ctx-reaction-btn reaction-wide" data-reaction="kiss" type="button"><span>😘</span> Öpücük</button>
+    </div>
+  </div>
+
+  <div id="winNotifyContainer" class="win-notify-container"></div>
+
+  <div id="winConfirmOverlay" class="win-confirm-overlay hidden">
+    <div class="win-confirm-box">
+      <div class="win-confirm-title">SFD Sketch Bildirim</div>
+      <div id="winConfirmMessage" class="win-confirm-message"></div>
+      <div class="win-confirm-actions">
+        <button id="winConfirmCancelBtn" type="button">İptal</button>
+        <button id="winConfirmOkBtn" type="button">Tamam</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/game.js?v=web-final-20260615"></script>
+</body>
+</html>

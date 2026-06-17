@@ -21,12 +21,19 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 public class MainActivity extends Activity {
     private static final String PREFS = "sfd_sketch";
     private static final String KEY_URL = "server_url";
+    private static final String DEFAULT_URL = "https://www.sfdsketch.com";
     private static final String IPHONE_UA = "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1";
 
     private WebView webView;
+    private String fixedStageScript = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,20 +44,19 @@ public class MainActivity extends Activity {
             getWindow().getAttributes().layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
         }
         enterImmersiveMode();
+        fixedStageScript = readAsset("fixed-stage.js");
         setupWebView();
 
-        String savedUrl = getSharedPreferences(PREFS, MODE_PRIVATE).getString(KEY_URL, "");
-        if (savedUrl == null || savedUrl.trim().isEmpty()) {
-            showServerDialog(false);
-        } else {
-            loadServer(savedUrl);
-        }
+        String savedUrl = getSharedPreferences(PREFS, MODE_PRIVATE).getString(KEY_URL, DEFAULT_URL);
+        if (savedUrl == null || savedUrl.trim().isEmpty()) savedUrl = DEFAULT_URL;
+        loadServer(savedUrl);
     }
 
     private void setupWebView() {
         FrameLayout root = new FrameLayout(this);
         root.setBackgroundColor(Color.rgb(2, 3, 7));
         webView = new WebView(this);
+        webView.setBackgroundColor(Color.rgb(2, 3, 7));
         root.addView(webView, new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT));
         setContentView(root);
 
@@ -61,6 +67,9 @@ public class MainActivity extends Activity {
         s.setMediaPlaybackRequiresUserGesture(false);
         s.setUseWideViewPort(true);
         s.setLoadWithOverviewMode(false);
+        s.setSupportZoom(false);
+        s.setBuiltInZoomControls(false);
+        s.setDisplayZoomControls(false);
         s.setTextZoom(100);
         s.setUserAgentString(IPHONE_UA);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -75,35 +84,51 @@ public class MainActivity extends Activity {
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
                 enterImmersiveMode();
-                String js = "(function(){var r=document.documentElement,b=document.body;['sfd-android-v137','sfd-android-v138','sfd-android-v139','sfd-android-v140','sfd-android-v141'].forEach(function(c){r.classList.remove(c);});r.classList.add('sfd-mobile-v136');if(b){['sfd-v137-game-active','sfd-v138-game-active','sfd-v139-game-active','sfd-v140-game-active','sfd-v141-game-active','sfd-v137-drawing','sfd-v138-drawing','sfd-v139-drawing','sfd-v140-drawing','sfd-v141-drawing'].forEach(function(c){b.classList.remove(c);});}window.dispatchEvent(new Event('resize'));})();";
-                view.evaluateJavascript(js, null);
+                injectFixedStage(view);
+                view.postDelayed(() -> injectFixedStage(view), 250);
+                view.postDelayed(() -> injectFixedStage(view), 900);
             }
         });
+    }
+
+    private void injectFixedStage(WebView view) {
+        if (view == null || fixedStageScript == null || fixedStageScript.trim().isEmpty()) return;
+        view.evaluateJavascript(fixedStageScript, null);
+    }
+
+    private String readAsset(String name) {
+        StringBuilder result = new StringBuilder();
+        try (InputStream stream = getAssets().open(name);
+             BufferedReader reader = new BufferedReader(new InputStreamReader(stream))) {
+            String line;
+            while ((line = reader.readLine()) != null) result.append(line).append('\n');
+        } catch (IOException error) {
+            Toast.makeText(this, "Sabit ekran dosyası okunamadı.", Toast.LENGTH_LONG).show();
+        }
+        return result.toString();
     }
 
     private void loadServer(String rawUrl) {
         String url = normalizeUrl(rawUrl);
         getSharedPreferences(PREFS, MODE_PRIVATE).edit().putString(KEY_URL, url).apply();
         String separator = url.contains("?") ? "&" : "?";
-        webView.loadUrl(url + separator + "mobile=1&apk=1");
+        webView.loadUrl(url + separator + "mobile=1&apk=2&fixed=1297x721");
     }
 
     private String normalizeUrl(String raw) {
         String url = raw == null ? "" : raw.trim();
         if (!url.startsWith("http://") && !url.startsWith("https://")) {
-            url = "http://" + url;
+            url = "https://" + url;
         }
-        while (url.endsWith("/")) {
-            url = url.substring(0, url.length() - 1);
-        }
+        while (url.endsWith("/")) url = url.substring(0, url.length() - 1);
         return url;
     }
 
     private void showServerDialog(boolean allowCancel) {
         EditText input = new EditText(this);
         input.setSingleLine(true);
-        input.setHint("http://192.168.1.100:3000");
-        input.setText(getSharedPreferences(PREFS, MODE_PRIVATE).getString(KEY_URL, ""));
+        input.setHint(DEFAULT_URL);
+        input.setText(getSharedPreferences(PREFS, MODE_PRIVATE).getString(KEY_URL, DEFAULT_URL));
         input.setSelectAllOnFocus(true);
         int pad = (int) (20 * getResources().getDisplayMetrics().density);
         FrameLayout holder = new FrameLayout(this);
@@ -112,7 +137,7 @@ public class MainActivity extends Activity {
 
         AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle("SFD Sketch sunucu adresi")
-                .setMessage("Bilgisayarda npm start çalıştırdıktan sonra telefonda açtığın adresi yaz.")
+                .setMessage("Normal kullanım için www.sfdsketch.com adresini değiştirmene gerek yok.")
                 .setView(holder)
                 .setPositiveButton("BAĞLAN", null)
                 .setNegativeButton(allowCancel ? "İPTAL" : "ÇIKIŞ", (d, w) -> {
@@ -122,10 +147,7 @@ public class MainActivity extends Activity {
 
         dialog.setOnShowListener(d -> dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(v -> {
             String value = input.getText().toString().trim();
-            if (value.isEmpty()) {
-                Toast.makeText(this, "Sunucu adresini yaz.", Toast.LENGTH_SHORT).show();
-                return;
-            }
+            if (value.isEmpty()) value = DEFAULT_URL;
             dialog.dismiss();
             loadServer(value);
         }));
@@ -159,7 +181,10 @@ public class MainActivity extends Activity {
     protected void onResume() {
         super.onResume();
         enterImmersiveMode();
-        if (webView != null) webView.onResume();
+        if (webView != null) {
+            webView.onResume();
+            webView.postDelayed(() -> injectFixedStage(webView), 150);
+        }
     }
 
     @Override
@@ -170,15 +195,12 @@ public class MainActivity extends Activity {
 
     @Override
     public void onBackPressed() {
-        if (webView != null && webView.canGoBack()) {
-            webView.goBack();
-            return;
-        }
         new AlertDialog.Builder(this)
                 .setTitle("SFD Sketch")
-                .setItems(new String[]{"Sunucu adresini değiştir", "Uygulamadan çık"}, (dialog, which) -> {
+                .setItems(new String[]{"Sunucu adresini değiştir", "Sayfayı yenile", "Uygulamadan çık"}, (dialog, which) -> {
                     if (which == 0) showServerDialog(true);
-                    else finish();
+                    else if (which == 1 && webView != null) webView.reload();
+                    else if (which == 2) finish();
                 })
                 .show();
     }

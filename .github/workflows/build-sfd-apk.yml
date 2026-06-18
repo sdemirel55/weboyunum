@@ -5,6 +5,7 @@ on:
     branches: [ main ]
     paths:
       - "android-apk/**"
+      - "public/neon-assets/logo.png"
       - ".github/workflows/build-sfd-apk.yml"
 
 permissions:
@@ -31,6 +32,11 @@ jobs:
       - name: Install Android platform
         run: yes | sdkmanager "platforms;android-35" "build-tools;35.0.0"
 
+      - name: Prepare launcher logo
+        run: |
+          mkdir -p android-apk/app/src/main/res/drawable-nodpi
+          cp public/neon-assets/logo.png android-apk/app/src/main/res/drawable-nodpi/sfd_logo.png
+
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
@@ -40,12 +46,12 @@ jobs:
         run: gradle -p android-apk assembleDebug --stacktrace
 
       - name: Prepare APK
-        run: cp android-apk/app/build/outputs/apk/debug/app-debug.apk SFD-Sketch-Android-v2.0-Sabit-1297x721.apk
+        run: cp android-apk/app/build/outputs/apk/debug/app-debug.apk SFD-Sketch-Android-v7-Logo-Final.apk
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: SFD-Sketch-Android-v2-Fixed-Layout
-          path: SFD-Sketch-Android-v2.0-Sabit-1297x721.apk
+          name: SFD-Sketch-Android-v7-Logo-Final
+          path: SFD-Sketch-Android-v7-Logo-Final.apk
           if-no-files-found: error
           retention-days: 7

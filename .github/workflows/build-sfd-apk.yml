@@ -5,7 +5,6 @@ on:
     branches: [ main ]
     paths:
       - "android-apk/**"
-      - "public/neon-assets/logo.png"
       - ".github/workflows/build-sfd-apk.yml"
 
 permissions:
@@ -33,9 +32,7 @@ jobs:
         run: yes | sdkmanager "platforms;android-35" "build-tools;35.0.0"
 
       - name: Prepare launcher logo
-        run: |
-          mkdir -p android-apk/app/src/main/res/drawable-nodpi
-          cp public/neon-assets/logo.png android-apk/app/src/main/res/drawable-nodpi/sfd_logo.png
+        run: python android-apk/decode_logo.py
 
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
